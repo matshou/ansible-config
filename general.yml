@@ -4,6 +4,7 @@
   roles:
     - xfce-config
     - display
+    - switcheroo
     - openvpn
     - group-wheel
     # install docker before creating users because 'docker' group 
