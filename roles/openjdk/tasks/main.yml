@@ -1,0 +1,9 @@
+- name: Install OpenJDK 8 JDK
+  ansible.builtin.package:
+    name: openjdk-8-jdk
+    state: present
+    
+- name: Install OpenJDK 8 sources
+  ansible.builtin.package:
+    name: openjdk-8-source
+    state: present
