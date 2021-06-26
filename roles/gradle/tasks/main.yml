@@ -12,16 +12,30 @@
     dest: /opt/gradle/
     remote_src: yes
     
-- name: Export GRADLE_HOME variable
+- name: Export GRADLE_HOME (bash)
   ansible.builtin.lineinfile:
     path: /home/yooks/.bashrc
     regexp: '^\s*export GRADLE_HOME\='
     line: 'export GRADLE_HOME=/opt/gradle/gradle-7.1'
     state: present
     
-- name: Add Gradle to PATH
+- name: Add Gradle to PATH (bash)
   ansible.builtin.lineinfile:
     path: /home/yooks/.bashrc
+    regexp: '^\s*export PATH\=\$\{GRADLE_HOME\}'
+    line: 'export PATH=${GRADLE_HOME}/bin:${PATH}'
+    state: present
+
+- name: Export GRADLE_HOME (zshell)
+  ansible.builtin.lineinfile:
+    path: /home/yooks/.zshrc
+    regexp: '^\s*export GRADLE_HOME\='
+    line: 'export GRADLE_HOME=/opt/gradle/gradle-7.1'
+    state: present
+    
+- name: Add Gradle to PATH (zshell)
+  ansible.builtin.lineinfile:
+    path: /home/yooks/.zshrc
     regexp: '^\s*export PATH\=\$\{GRADLE_HOME\}'
     line: 'export PATH=${GRADLE_HOME}/bin:${PATH}'
     state: present
