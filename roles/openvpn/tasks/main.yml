@@ -1,0 +1,4 @@
+- name: Install OpenVPN Network Manager plugin
+  ansible.builtin.package:
+    name: network-manager-openvpn-gnome
+    state: present
