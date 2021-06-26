@@ -5,7 +5,8 @@
     group: yooks
     state: directory
     mode: 0774
-
+    
+# https://docs.gradle.org/current/userguide/installation.html
 - name: Install Gradle release
   ansible.builtin.unarchive:
     src: https://services.gradle.org/distributions/gradle-7.1-all.zip
