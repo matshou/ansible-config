@@ -2,3 +2,9 @@
 - name: Change primary display settings
   ansible.builtin.shell: xrandr --output VGA-1 --left-of eDP-1
   
+# https://wiki.archlinux.org/title/Xfwm#Video_tearing
+- name: Fix screen tearing
+  ansible.builtin.shell: xfwm4 --replace --vblank=glx &
+  
+- name: Persist screen tearing fix
+  ansible.builtin.shell: xfconf-query -c xfwm4 -p /general/vblank_mode -s glx

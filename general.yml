@@ -4,6 +4,7 @@
   roles:
     - xfce-config
     - display
+    - openvpn
     - group-wheel
     # install docker before creating users because 'docker' group 
     # doesn't exist before we install docker
