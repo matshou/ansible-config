@@ -9,7 +9,7 @@
 - name: Install Gradle release
   ansible.builtin.unarchive:
     src: https://services.gradle.org/distributions/gradle-7.1-all.zip
-    dest: /opt/gradle/gradle-7.1
+    dest: /opt/gradle/
     remote_src: yes
     
 - name: Export GRADLE_HOME variable
