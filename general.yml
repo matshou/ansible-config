@@ -3,6 +3,7 @@
   become: yes
   roles:
     - xfce-config
+    - display
     - group-wheel
     # install docker before creating users because 'docker' group 
     # doesn't exist before we install docker

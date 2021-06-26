@@ -1,0 +1,4 @@
+# https://wiki.ubuntu.com/X/Config/Resolution
+- name: Change primary display settings
+  ansible.builtin.shell: xrandr --output VGA-1 --left-of eDP-1
+  
