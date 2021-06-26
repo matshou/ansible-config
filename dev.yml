@@ -1,0 +1,17 @@
+- name: Run playbook for development environment
+  hosts: localhost
+  become: yes
+  roles:
+    - jq
+    - curl
+    - git
+    - github-desktop
+    - git-config
+    - node
+    - npm
+    - phpstorm
+    - vim
+    - firacode
+    - kitty
+    - zsh
+    - ranger

@@ -1,0 +1,17 @@
+- name: Run playbook for general environment
+  hosts: localhost
+  become: yes
+  roles:
+    - xfce-config
+    - group-wheel
+    # install docker before creating users because 'docker' group 
+    # doesn't exist before we install docker
+    - docker
+    - user
+    - discord
+    - slack
+    - clickup
+    - chromium
+    - typora
+    - notepadqq
+    - apt-upgrade

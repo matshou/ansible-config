@@ -1,0 +1,4 @@
+- name: Install notepadqq
+  ansible.builtin.package:
+    name: notepadqq
+    state: present

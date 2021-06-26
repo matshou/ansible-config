@@ -1,0 +1,3 @@
+- name: Perform aptitude full-upgrade
+  apt:
+    upgrade: full

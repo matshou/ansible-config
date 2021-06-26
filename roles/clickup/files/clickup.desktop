@@ -1,0 +1,10 @@
+[Desktop Entry]
+X-SnapInstanceName=clickup
+Name=ClickUp
+Exec=/usr/local/bin/clickup-desktop %u
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/clickup/icon.png
+StartupWMClass=ClickUp
+Comment=Simple ClickUp web application wrapper
+Categories=Development;

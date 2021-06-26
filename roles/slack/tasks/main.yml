@@ -1,0 +1,6 @@
+# https://snapcraft.io/clickup
+- name: Install slack
+  community.general.snap:
+    name: slack
+    classic: yes
+    state: present

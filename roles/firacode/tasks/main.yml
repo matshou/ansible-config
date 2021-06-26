@@ -1,0 +1,29 @@
+- set_fact:
+    fonts_firacode_dir: /usr/share/fonts/opentype/firacode
+
+- name: Query Github API for the latest FiraCode release
+  shell: curl -s https://api.github.com/repos/tonsky/FiraCode/releases/latest | jq -r ".tag_name"
+  args:
+    warn: false
+  register: firacode_release # 5.2 (no preceding character, just numeric)
+
+- name: Make sure {{ fonts_firacode_dir }} directory exists
+  file:
+    path: "{{fonts_firacode_dir }}"
+    state: directory
+
+# this task is following the example given in the FiraCode wiki/README
+- name: "Download FiraCode v{{ firacode_release.stdout }} TTF font files"
+  get_url:
+    url: "https://github.com/powerline/fonts/blob/master/FiraMono/FuraMono-{{ item }}%20Powerline.otf?raw=true"
+    dest: "{{fonts_firacode_dir }}/FiraCode-{{ item }}.oft"
+    mode: u=rw,go=r
+  with_items:
+    - Bold
+    - Medium
+    - Regular
+  register: firacode_installed
+
+- name: Update the font cache
+  command: fc-cache -fv
+  when: firacode_installed.changed == true

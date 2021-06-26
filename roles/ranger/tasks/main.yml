@@ -1,0 +1,4 @@
+- name: Install Ranger
+  ansible.builtin.package:
+    name: ranger
+    state: present

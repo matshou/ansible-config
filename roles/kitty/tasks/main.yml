@@ -1,0 +1,13 @@
+- name: Install kitty terminal
+  ansible.builtin.package:
+    name: kitty
+    state: present
+
+- name: Add kitty config
+  become_user: yooks
+  ansible.builtin.copy:
+    src: kitty.conf
+    dest: /home/yooks/.config/kitty
+    owner: yooks
+    group: yooks
+    mode: 4512

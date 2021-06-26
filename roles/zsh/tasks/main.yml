@@ -1,0 +1,29 @@
+- name: Install ZSHell
+  ansible.builtin.package:
+    name: zsh
+    state: present
+
+- local_action: stat path=~/.oh-my-zsh
+  become_user: yooks
+  register: ohMyZshDir
+
+- name: Install oh my zsh for user
+  become_user: yooks
+  ansible.builtin.shell:
+    cmd: sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  when: ohMyZshDir.stat.exists == false
+
+- name: Set Zsh theme for user
+  become_user: yooks
+  ansible.builtin.replace:
+    path: ~/.zshrc
+    regexp: 'ZSH_THEME=\".*\"'
+    replace: 'ZSH_THEME="apple"'
+
+- name: Change user shell to zsh
+  become: yes
+  user:
+    name: yooks
+    shell: /bin/zsh
+
+

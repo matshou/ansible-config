@@ -1,0 +1,14 @@
+# https://docs.github.com/en/github/getting-started-with-github/getting-started-with-git/associating-text-editors-with-git
+- name: Set git external editor
+  community.general.git_config:
+    name: core.editor
+    scope: system
+    value: nano
+    state: present
+    
+# https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-cache
+- name: Cache credentials in memory
+  community.general.git_config:
+    name: credential.helper
+    scope: system
+    value: cache --timeout 43200 # 12 hours

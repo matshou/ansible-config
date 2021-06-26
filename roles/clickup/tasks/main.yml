@@ -1,0 +1,23 @@
+- name: Download clickup-desktop AppImage
+  get_url:
+    url: https://github.com/clickup/clickup-release/releases/download/v2.0.22/clickup-desktop-2.0.22-x86_64.AppImage
+    dest: /usr/local/bin/clickup-desktop
+    mode: 0755
+
+- name: Copy clickup desktop file
+  ansible.builtin.copy:
+    src: clickup.desktop
+    dest: /usr/share/applications
+    mode: 0744
+   
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /usr/share/icons/clickup
+    state: directory
+    mode: 0755
+   
+- name: Copy clickup icon file
+  ansible.builtin.copy:
+    src: icon.png
+    dest: /usr/share/icons/clickup
+    mode: 0744

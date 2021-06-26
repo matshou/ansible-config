@@ -1,0 +1,4 @@
+- name: Install chromium-browser
+  ansible.builtin.package:
+    name: chromium-browser
+    state: present

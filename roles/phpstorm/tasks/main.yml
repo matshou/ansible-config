@@ -1,0 +1,5 @@
+# https://snapcraft.io/phpstorm
+- name: Install phpstorm
+  community.general.snap:
+    name: phpstorm
+    classic: yes

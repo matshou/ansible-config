@@ -1,0 +1,15 @@
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: ~/.config/xfce4/xfconf/xfce-perchannel-xml
+    state: directory
+    owner: yooks
+    mode: 0700
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: xfce4-panel.xml
+    dest: ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+    force: yes
+    owner: yooks
+    group: yooks
+    mode: 4512

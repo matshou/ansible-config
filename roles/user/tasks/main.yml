@@ -1,0 +1,9 @@
+- name: Add main user
+  ansible.builtin.user:
+    name: yooks
+    comment: Matthew Cain
+    groups: wheel,docker
+    password: $6$8JElvFNDBsYkJQC1$dhNotNnJv/4yUhMT3PiepWcEm2ot6Ls7z4WtJYTnL7YZDYB8duyTnX20FbebITzzfEQxFEhmkuyPw6pbhyhzU/
+    update_password: always
+    shell: /bin/bash
+    state: present
