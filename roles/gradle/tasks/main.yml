@@ -1,0 +1,27 @@
+- name: Create Gradle install dir
+  ansible.builtin.file:
+    path: /opt/gradle/gradle-7.1
+    owner: root
+    group: yooks
+    state: directory
+    mode: 0774
+
+- name: Install Gradle release
+  ansible.builtin.unarchive:
+    src: https://services.gradle.org/distributions/gradle-7.1-all.zip
+    dest: /opt/gradle/gradle-7.1
+    remote_src: yes
+    
+- name: Export GRADLE_HOME variable
+  ansible.builtin.lineinfile:
+    path: /home/yooks/.bashrc
+    regexp: '^\s*export GRADLE_HOME\='
+    line: 'export GRADLE_HOME=/opt/gradle/gradle-7.1'
+    state: present
+    
+- name: Add Gradle to PATH
+  ansible.builtin.lineinfile:
+    path: /home/yooks/.bashrc
+    regexp: '^\s*export PATH\=\$\{GRADLE_HOME\}'
+    line: 'export PATH=${GRADLE_HOME}/bin:${PATH}'
+    state: present

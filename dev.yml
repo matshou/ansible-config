@@ -8,6 +8,7 @@
     - github-desktop
     - git-config
     - openjdk
+    - gradle
     - node
     - npm
     - idea
