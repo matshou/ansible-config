@@ -1,0 +1,5 @@
+# https://snapcraft.io/intellij-idea-community
+- name: Install IntelliJ IDEA
+  community.general.snap:
+    name: intellij-idea-community
+    classic: yes
