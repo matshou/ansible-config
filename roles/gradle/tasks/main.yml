@@ -40,3 +40,16 @@
     regexp: '^\s*export PATH\=\$\{GRADLE_HOME\}'
     line: 'export PATH=${GRADLE_HOME}/bin:${PATH}'
     state: present
+
+# https://github.com/gradle/gradle-completion
+- name: Install zsh support for Gradle
+  ansible.builtin.git:
+    repo: https://github.com/gradle/gradle-completion.git
+    dest: /home/yooks/.oh-my-zsh/plugins/gradle-completion
+
+- name: Register gradle-completion plugin
+  ansible.builtin.lineinfile:
+    path: /home/yooks/.zshrc
+    regexp: '^plugins\='
+    line: 'plugins+=(gradle-completion)'
+    state: present
