@@ -4,6 +4,7 @@
   roles:
     - xfce-config
     - display
+    - sound
     - switcheroo
     - openvpn
     - group-wheel
